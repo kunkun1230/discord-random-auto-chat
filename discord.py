@@ -53,8 +53,13 @@ try:
             text = conf['customMessage']
         else:
             text = random.choice(sentences)
+        time.sleep(20)
         textArea = driver.find_elements_by_css_selector("div[class^=textArea-]")[0]
-        textArea.find_elements_by_css_selector("div")[2].click()
+
+        # textArea.find_elements_by_css_selector("div")[2].click()
+        element1 = textArea.find_elements_by_css_selector("div")[2]
+        driver.execute_script("arguments[0].click();", element1)
+
         print("-> Clicked Text Area")
         print("-> Write: " + text)
         theBody.send_keys(text)
